@@ -44,8 +44,9 @@ Clone this repo and compile from source:
 
 ## For Arch users:
 
-Download the file PKGBUILD
+Download the file PKGBUILD, create and install the package:
 
+	$ wget https://raw.githubusercontent.com/geirda/dwm-geir/main/PKGBUILD
 	$ makepkg -i
 
 Precompiled packages for Arch: https://github.com/geirda/Arch/tree/master/suckless/dwm/
