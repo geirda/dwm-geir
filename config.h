@@ -20,11 +20,12 @@ static const char col_gray6[]       = "#cac5b5";
 static const char col_red[]         = "#9e453e";
 static const char col_green[]       = "#8c9e33";
 static const char col_blue[]        = "#6b82ab";
+static const char col_yellow[]      = "#dac135";
 static const char *colors[][3]      = {
 	/*                 fg         bg         border   */
-	[SchemeNorm]   = { col_gray5, col_gray1, col_gray2 },
-	[SchemeSel]    = { col_gray6, col_gray3, col_blue  },
-	[SchemeTitle]  = { col_gray6, col_gray1, col_gray2 },
+	[SchemeNorm]   = { col_gray5, col_gray1, col_gray2  },
+	[SchemeSel]    = { col_gray6, col_gray3, col_yellow },
+	[SchemeTitle]  = { col_gray6, col_gray1, col_gray2  },
 };
 
 /* tagging */
@@ -35,17 +36,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class        instance  title           tags mask  switchtotag  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",       NULL,     NULL,           1 << 4,    1,           0,          0,           0,        -1 },
-	{ "firefox",    NULL,     NULL,           1 << 1,    1,           0,          0,          -1,        -1 },
-	{ "Pcmanfm",    NULL,     NULL,           0,         0,           1,          0,           0,        -1 },
-	{ "Lxappearance", NULL,   NULL,           0,         0,           1,          0,          -1,        -1 },
-	{ "Galculator", NULL,     NULL,           0,         0,           1,          0,          -1,        -1 },
-	{ "Gxmessage",  NULL,     NULL,           0,         0,           1,          0,           0,        -1 },
-	{ "Guake",      NULL,     NULL,           0,         0,           1,          1,          -1,        -1 },
-	{ "st",         NULL,     NULL,           0,         0,           0,          1,           0,        -1 },
-	{ "Alacritty",  NULL,     NULL,           0,         0,           0,          1,           0,        -1 },
-	{ NULL,         NULL,     "Event Tester", 0,         0,           0,          0,           1,        -1 }, /* xev */
+	/* class        instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",       NULL,     NULL,           1 << 4,    0,          0,           0,        -1 },
+	{ "Firefox",    NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
+	{ "Pcmanfm",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Lxappearance", NULL,   NULL,           0,         1,          0,          -1,        -1 },
+	{ "Galculator", NULL,     NULL,           0,         1,          0,          -1,        -1 },
+	{ "Gxmessage",  NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Guake",      NULL,     NULL,           0,         1,          1,          -1,        -1 },
+	{ "st",         NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,         NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -133,7 +133,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        layoutmenu,     {0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkRootWin,           0,              Button3,        spawn,          {.v = rootmenu } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
