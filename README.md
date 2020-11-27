@@ -48,7 +48,7 @@ Download the file PKGBUILD
 
 	$ makepkg -i
 
-Precompiled packages for Arch: https://github.com/geirda/Arch/suckless/dwm/
+Precompiled packages for Arch: https://github.com/geirda/Arch/tree/master/suckless/dwm/
 
 
 ![suckless](https://raw.githubusercontent.com/geirda/Arch/master/suckless/suckless.png)
