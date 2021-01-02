@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	git checkout atle
 }
 
 build() {
