@@ -17,7 +17,7 @@ read SVAR
 
 case $SVAR in
 	j|J|y|Y)
-		wget -q https:/raw.githubusercontent.com/geirda/dwm-geir/atle/dwm-geir-${NYESTE}-x86_64.pkg.tar.zst -O /tmp/dwmgeir.pkg.tar.zst
+		wget -q https:/github.com/geirda/dwm-geir/raw/atle/dwm-geir-${NYESTE}-x86_64.pkg.tar.zst -O /tmp/dwmgeir.pkg.tar.zst
 		sudo pacman --noconfirm -U /tmp/dwmgeir.pkg.tar.zst
 		;;
 esac
