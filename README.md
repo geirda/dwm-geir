@@ -47,7 +47,7 @@ Clone this repo and compile from source:
 	$ git clone https://github.com/geirda/dwm-geir.git
 	$ cd dwm-geir
 	$ git checkout openbsd
-	$ sudo make clean install
+	$ doas make clean install
 
 ## For Arch users:
 
