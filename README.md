@@ -28,7 +28,7 @@ Hack font is usually found in your distro's repo. For Debian-based systems:
 
 For Arch-based systems:
 
-	$ pacman -S ttf-hack
+	$ sudo pacman -S ttf-hack
 
 RobotoMono Nerd Font can be downloaded from https://www.nerdfonts.com/font-downloads
 
