@@ -1,3 +1,8 @@
 config.h
 *.o
 dwm
+debian/debhelper-build-stamp
+debian/.debhelper/
+debian/dwm-geir/
+debian/files
+debian/dwm-geir.substvars

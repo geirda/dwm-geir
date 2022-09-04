@@ -22,7 +22,7 @@ Depends: ${misc:Depends},
          libx11-xcb-dev,
          libxcb-res0-dev
 Recommends: suckless-tools, x11-xserver-utils, stterm | x-terminal-emulator
-Provides: x-window-manager dwm
+Provides: x-window-manager, dwm
 Conflicts: dwm
 Description: dynamic window manager
  dwm is a minimalistic window manager. It manages windows in tiling and floating
