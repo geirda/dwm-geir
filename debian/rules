@@ -7,5 +7,3 @@ SHELL := sh -e
 %:
 	dh ${@}
 
-override_dh_auto_install:
-	DESTDIR=debian/dwm-geir/usr $(MAKE) install
