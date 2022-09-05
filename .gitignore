@@ -4,5 +4,7 @@ dwm
 debian/debhelper-build-stamp
 debian/.debhelper/
 debian/dwm-geir/
+debian/dwm-geir-fonts/
+debian/tmp/
 debian/files
-debian/dwm-geir.substvars
+debian/*.substvars

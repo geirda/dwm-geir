@@ -15,12 +15,19 @@ Homepage: http://dwm.suckless.org/
 Vcs-Browser: https://salsa.debian.org/hle/dwm
 Vcs-Git: https://salsa.debian.org/hle/dwm.git
 
+Package: dwm-geir-fonts
+Architecture: any
+Conflicts: fonts-roboto
+Recommends: dwm-geir
+Description: Fonts for DWM Geir
+
 Package: dwm-geir
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          libx11-xcb-dev,
-         libxcb-res0-dev
+         libxcb-res0-dev,
+         dwm-geir-fonts
 Recommends: suckless-tools, x11-xserver-utils, stterm | x-terminal-emulator
 Provides: x-window-manager, dwm
 Conflicts: dwm
