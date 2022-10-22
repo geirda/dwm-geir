@@ -38,9 +38,12 @@ static const Rule rules[] = {
 	/* class        instance  title           tags mask  switchtotag  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",       NULL,     NULL,           1 << 4,    1,           0,          0,           0,        -1 },
 	{ "firefox",    NULL,     NULL,           1 << 1,    1,           0,          0,          -1,        -1 },
+	{ "audacious",  NULL,     NULL,           0,         0,           1,          0,           0,        -1 },
 	{ "Pcmanfm",    NULL,     NULL,           0,         0,           1,          0,           0,        -1 },
 	{ "Lxappearance", NULL,   NULL,           0,         0,           1,          0,          -1,        -1 },
 	{ "Galculator", NULL,     NULL,           0,         0,           1,          0,          -1,        -1 },
+	{ "Pavucontrol", NULL,    NULL,           0,         0,           1,          0,          -1,        -1 },
+	{ "Transmission-gtk", NULL, NULL,         0,         0,           1,          0,          -1,        -1 },
 	{ "Gxmessage",  NULL,     NULL,           0,         0,           1,          0,           0,        -1 },
 	{ "Guake",      NULL,     NULL,           0,         0,           1,          1,          -1,        -1 },
 	{ "st",         NULL,     NULL,           0,         0,           0,          1,           0,        -1 },
