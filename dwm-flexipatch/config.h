@@ -487,6 +487,8 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
+	RULE(.class = "Gimp", .tags = 1 << 4, .switchtag = 3)
+	RULE(.class = "firefox", .tags = 1 << 1, .switchtag = 3)
 	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
@@ -500,8 +502,6 @@ static const Rule rules[] = {
 	RULE(.class = "Gxmessage", .isfloating = 1)
 	RULE(.class = "Gxmessage", .isfloating = 1)
 	RULE(.class = "Guake", .isfloating = 1, .isterminal = 1)
-	RULE(.class = "Gimp", .tags = 1 << 4, .switchtag = 3)
-	RULE(.class = "firefox", .tags = 1 << 1, .switchtag = 3)
 	RULE(.class = "st", .isterminal = 1)
 	RULE(.class = "Alacritty", .isterminal = 1)
 	#if RENAMED_SCRATCHPADS_PATCH
