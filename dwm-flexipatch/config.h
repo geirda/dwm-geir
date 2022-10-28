@@ -500,7 +500,6 @@ static const Rule rules[] = {
 	RULE(.class = "Pavucontrol", .isfloating = 1)
 	RULE(.class = "Transmission-gtk", .isfloating = 1)
 	RULE(.class = "Gxmessage", .isfloating = 1)
-	RULE(.class = "Gxmessage", .isfloating = 1)
 	RULE(.class = "Guake", .isfloating = 1, .isterminal = 1)
 	RULE(.class = "st", .isterminal = 1)
 	RULE(.class = "Alacritty", .isterminal = 1)
