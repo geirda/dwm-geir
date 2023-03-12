@@ -199,8 +199,8 @@ static char hidselbgcolor[]              = "#222222";
 
 static char urgfgcolor[]                 = "#bbbbbb";
 static char urgbgcolor[]                 = "#222222";
-static char urgbordercolor[]             = "#ff0000";
-static char urgfloatcolor[]              = "#db8fd9";
+static char urgbordercolor[]             = "#e48083";
+static char urgfloatcolor[]              = "#e48083";
 
 #if RENAMED_SCRATCHPADS_PATCH
 static char scratchselfgcolor[]          = "#FFF7D4";
@@ -493,13 +493,12 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "audacious", .isfloating = 1)
-	RULE(.class = "Pcmanfm", .isfloating = 1)
-	RULE(.class = "Lxappearance", .isfloating = 1)
-	RULE(.class = "Galculator", .isfloating = 1)
-	RULE(.class = "Pavucontrol", .isfloating = 1)
-	RULE(.class = "Transmission-gtk", .isfloating = 1)
-	RULE(.class = "Gxmessage", .isfloating = 1)
+	RULE(.class = "Pcmanfm", .isfloating = 1, .iscentered = 1)
+	RULE(.class = "Lxappearance", .isfloating = 1, .iscentered = 1)
+	RULE(.class = "Galculator", .isfloating = 1, .iscentered = 1)
+	RULE(.class = "Pavucontrol", .isfloating = 1, .iscentered = 1)
+	RULE(.class = "Transmission-gtk", .isfloating = 1, .iscentered = 1)
+	RULE(.class = "Gxmessage", .isfloating = 1, .iscentered = 1)
 	RULE(.class = "Guake", .isfloating = 1, .isterminal = 1)
 	RULE(.class = "st", .isterminal = 1)
 	RULE(.class = "Alacritty", .isterminal = 1)
@@ -868,7 +867,7 @@ static const char *dmenucmd[] = {
 	"-nf", normfgcolor,
 	"-sb", selbgcolor,
 	"-sf", selfgcolor,
-	"-h", "26",
+	"-h", "25",
 	"-p", "dmenu:",
 	#if BAR_DMENUMATCHTOP_PATCH
 	topbar ? NULL : "-b",
