@@ -1,0 +1,10 @@
+config.h
+*.o
+dwm
+debian/debhelper-build-stamp
+debian/.debhelper/
+debian/dwm-geir/
+debian/dwm-geir-fonts/
+debian/tmp/
+debian/files
+debian/*.substvars
