@@ -45,6 +45,7 @@
 
 #include "drw.h"
 #include "util.h"
+#include "static.h"
 
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -324,6 +325,8 @@ applyrules(Client *c)
 	Monitor *m;
 	XClassHint ch = { NULL, NULL };
 
+	int force_noswallow = getenv(swallow_env) != NULL;
+
 	/* rule matching */
 	c->isfloating = 0;
 	c->tags = 0;
@@ -338,7 +341,7 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->isterminal = r->isterminal;
-			c->noswallow  = r->noswallow;
+			c->noswallow  = r->noswallow || force_noswallow;
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
