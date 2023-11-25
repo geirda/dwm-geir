@@ -4,6 +4,7 @@ dwm \- dynamic window manager
 .SH SYNOPSIS
 .B dwm
 .RB [ \-v ]
+.RB [ \-X ]
 .SH DESCRIPTION
 dwm is a dynamic window manager for X. It manages windows in tiled, monocle
 and floating layouts. Either layout can be applied dynamically, optimising the
@@ -37,6 +38,9 @@ dwm draws a small border around windows to indicate the focus state.
 .TP
 .B \-v
 prints version information to standard output, then exits.
+.TP
+.B \-X
+Enable Xinerama (one desktop per monitor). Requires compilation with -DXINERAMA and that Xinerama is active in the X server.
 .SH USAGE
 .SS Status bar
 .TP

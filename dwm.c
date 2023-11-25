@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <getopt.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
@@ -68,6 +69,14 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
 enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
+
+typedef struct {
+#ifdef XINERAMA
+	int do_xinerama;
+#else
+	int dummy;
+#endif /* XINERAMA */
+} Options;
 
 typedef union {
 	int i;
@@ -295,6 +304,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static Options options = {0};
 
 static xcb_connection_t *xcon;
 
@@ -2330,7 +2340,7 @@ updategeom(void)
 	int dirty = 0;
 
 #ifdef XINERAMA
-	if (XineramaIsActive(dpy)) {
+	if (XineramaIsActive(dpy) && options.do_xinerama) {
 		int i, j, n, nn;
 		Client *c;
 		Monitor *m;
@@ -2731,10 +2741,30 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
-	if (argc == 2 && !strcmp("-v", argv[1]))
-		die("dwm-"VERSION);
-	else if (argc != 1)
-		die("usage: dwm [-v]");
+	int opt;
+	while ((opt = getopt(argc, argv, "vX")) != -1) {
+		switch (opt) {
+			case 'v':
+				die("dwm-"VERSION);
+				break;
+#ifdef XINERAMA
+			case 'X':
+				options.do_xinerama = 1;
+				break;
+#endif
+			case '?':
+				die("Unknown option %s\n");
+				/* Fallthrough */
+			default:
+#ifdef XINERAMA
+				die("usage: dwm [-v]");
+#else
+				die("usage: dwm [-v] [-X]");
+#endif
+				break;
+				
+		}
+	}
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
