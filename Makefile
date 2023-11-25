@@ -5,10 +5,12 @@ include config.mk
 
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
+NS_SRC = noswallow.c
+NS_OBJ = ${NS_SRC:.c=.o}
 PREFIX = /usr
 MANPREFIX = /usr/share/man
 
-all: options dwm
+all: options dwm noswallow
 
 options:
 	@echo dwm build options:
@@ -27,8 +29,11 @@ config.h:
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
+noswallow: ${NS_OBJ}
+	${CC} -o $@ ${NS_OBJ}
+
 clean:
-	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
+	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz noswallow ${NS_OBJ}
 
 dist: clean
 	mkdir -p dwm-${VERSION}
@@ -41,7 +46,9 @@ dist: clean
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
+	cp -f noswallow ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	chmod 755 ${DESTDIR}${PREFIX}/bin/noswallow
 	echo ${DESTDIR}${MANPREFIX}/man1
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
@@ -49,6 +56,7 @@ install: all
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
-		${DESTDIR}${MANPREFIX}/man1/dwm.1
+		${DESTDIR}${MANPREFIX}/man1/dwm.1\
+		${DESTDIR}${PREFIX}/bin/noswallow
 
 .PHONY: all options clean dist install uninstall
