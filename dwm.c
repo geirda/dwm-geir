@@ -258,7 +258,7 @@ static void zoom(const Arg *arg);
 
 static pid_t getparentprocess(pid_t p);
 static int isdescprocess(pid_t p, pid_t c);
-static int isnoswallowprocess(pid_t c);
+static int isdescnoswallowprocess(pid_t c);
 static Client *swallowingclient(Window w);
 static Client *termforwin(const Client *c);
 static pid_t winpid(Window w);
@@ -325,8 +325,6 @@ applyrules(Client *c)
 	Monitor *m;
 	XClassHint ch = { NULL, NULL };
 
-	int force_noswallow = isnoswallowprocess(c->pid);
-
 	/* rule matching */
 	c->isfloating = 0;
 	c->tags = 0;
@@ -341,7 +339,7 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->isterminal = r->isterminal;
-			c->noswallow  = r->noswallow || force_noswallow;
+			c->noswallow  = r->noswallow;
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -359,6 +357,7 @@ applyrules(Client *c)
 	if (ch.res_name)
 		XFree(ch.res_name);
 	c->tags = c->tags & TAGMASK ? c->tags & TAGMASK : c->mon->tagset[c->mon->seltags];
+	c->noswallow = c->noswallow || isdescnoswallowprocess(c->pid);
 }
 
 int
@@ -2617,7 +2616,7 @@ isdescprocess(pid_t p, pid_t c)
 }
 
 int
-isnoswallowprocess(pid_t c)
+isdescnoswallowprocess(pid_t c)
 {
 	pid_t p;
 	char buf1[256];
@@ -2629,16 +2628,12 @@ isnoswallowprocess(pid_t c)
 	snprintf(buf1, sizeof(buf1) - 1, "/proc/%u/exe", (unsigned)p);
 
 	if (readlink(buf1, buf2, sizeof(buf2) - 1) < 0) {
-		fprintf(stderr, "Warning: readlink '%s' failed while getting process name: %s\n",
-			buf1, strerror(errno));
 		return 0;
 	}
 
-	printf("buf1: %s\n", buf1);
-	printf("buf2: %s\n", buf2);
-
-	if (strstr(buf2, "noswallow") != NULL)
+	if (strstr(buf2, "noswallow") != NULL) {
 		return 1;
+	}
 
 	return 0;
 }

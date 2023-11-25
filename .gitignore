@@ -1,6 +1,7 @@
 config.h
 *.o
 dwm
+noswallow
 debian/debhelper-build-stamp
 debian/.debhelper/
 debian/dwm-geir/
